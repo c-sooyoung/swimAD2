@@ -25,11 +25,11 @@ Wavegen에서 발생할 신호를 설정한다.
 `hdwf`: 기기번호  
 `frequency`: 주파수 (단위 Hz), 최대 10 MHz  
 `amplitude`: 진폭 (단위 V), 최대 5 V  
-`signal_shape`: 기본값 사인 (`swimAD2.dwfc.funcSine`). 다른 함수 모양은 [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual) 참고.  
+`signal_shape`: 기본값 사인함수 (`swimAD2.dwfc.funcSine`) 외에 `funcSquare`, `funcTriangle` 등 다른 함수 모양은 [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual) 참고.  
 `offset`: 신호의 DC offset. DC + 진폭 < max 5 V. 순수 DC 신호는 진폭을 0으로 하고 offset 값을 설정해서 얻을 수 있지만, stabilization time이 조금 필요하다.  
-`phase`: 신호의 시작 위상. (단위 &deg;도)  
-`symmetry`: 신호 왜곡, 기본값 50. (단위 %)  
-`channel`: Wavegen channel 번호 - 기본값 0. AD2에는 channel이 0, 1이 있고, 두 개를 동시에 설정하고 싶으면 -1로 설정.
+`phase`: 신호의 시작 위상. (단위 &deg;)  
+`symmetry`: 설명하기 애매함... Waveforms로 직접 보면 편함.   
+`channel`: Wavegen channel 번호. AD2에는 channel이 0, 1이 있고, 두 개를 동시에 설정하고 싶으면 -1로 설정.
 
 #### `start_wavegen`
 #### `stop_wavegen`, `reset_wavegen`
