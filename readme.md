@@ -12,8 +12,8 @@ Digilent Waveforms 설치 [링크](https://digilent.com/shop/software/digilent-w
 [`swimAD2.py`](https://github.com/c-sooyoung/swimAD2/blob/main/swimAD2.py)에는 AD2의 Wavegen과 Oscilloscope의 기초적인 조작만 할 수 있는 함수들만 있다. (학기 말에 가서야 Waveforms SDK가 조금이나마 익숙해지기 시작해서ㅠㅠ)
 
 ### AD2 연결
-#### `connect(number=0)` &rightarrow; `c_int`  
-n번째 (기본값 0) 연결된 digilent 기기(기기번호/handle, `hdwf`)를 가져온다. 변수 자체는 `c_int` 형태이고, 이후 wavegen과 oscilloscope를 이용할 때 넣어주면 된다. 
+#### `connect(number=0)` &rightarrow; `c_int` (`hdwf`)  
+n번째 (기본값 0) 연결된 digilent 기기(기기번호/handle &rightarrow; `hdwf`)를 가져온다. 변수 자체는 `c_int` 형태이고, 이후 wavegen과 oscilloscope를 이용할 때 넣어주면 된다. 
 
 #### `disconnect()`  
 모든 기기와의 연결을 끊는다. 예를 들어 AD2를 한 쥬피터 노트북에 연결해서 쓰다가, Waveforms 앱을 직접 사용하거나 다른 파일을 통해 조작하기 위해서는 먼저 현재 연결을 끊어줘야 한다.
@@ -31,9 +31,13 @@ Wavegen에서 발생할 신호를 설정한다.
 `symmetry`: 설명하기 애매함... Waveforms로 직접 보면 편함.   
 `channel`: Wavegen channel 번호. AD2에는 channel이 0, 1이 있고, 두 개를 동시에 설정하고 싶으면 -1로 설정.
 
-#### `start_wavegen`
-#### `stop_wavegen`, `reset_wavegen`
+#### `start_wavegen(hdwf, channel)`
+Wavegen에서 신호 발생 시작. 뒤에 `stop_wavegen()`이나 `reset_wavegen()`이 나타날 때까지 신호가 발생된다.
 
+#### `stop_wavegen(hdwf, channel)`, `reset_wavegen(hdwf, channel)`
+각각 신호 정지, Wavegen 설정 초기화.
+
+### Oscilloscope 조작
 #### `config_oscilloscope`
 #### `measure_oscilloscope`
 
