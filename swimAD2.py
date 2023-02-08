@@ -103,7 +103,7 @@ def config_oscilloscope(
     dwf.FDwfAnalogInBufferSizeSet(hdwf, c.c_int(sample_size))               # set sample size
 
 
-def start_oscilloscope(hdwf):
+def measure_oscilloscope(hdwf):
     sample_rate = c.c_double()
     dwf.FDwfAnalogInFrequencyGet(hdwf, c.byref(sample_rate))
     sample_size = c.c_int()
