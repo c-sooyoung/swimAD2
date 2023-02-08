@@ -7,7 +7,7 @@
 ## 처음 시작한다면
 Digilent Waveforms 설치 [링크](https://digilent.com/shop/software/digilent-waveforms/download) **&rightarrow; 반드시 SDK 포함해서 설치하기**
 
-먼저 Waveforms를 설치한 후에, [`example.ipynb`](https://github.com/c-sooyoung/swimAD2/blob/main/example.ipynb) 파일을 보면 간단한 신호 발생 후 측정하는 예시가 있다.
+먼저 Waveforms를 설치한 후에 [`example.ipynb`](https://github.com/c-sooyoung/swimAD2/blob/main/example.ipynb) 파일을 보면 간단한 신호 발생 후 측정하는 예시가 있다.
 
 혹시 C가 익숙하다면, [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual)를 직접 보는 것을 추천한다.
 
