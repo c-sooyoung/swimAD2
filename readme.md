@@ -7,6 +7,7 @@ Digilent Waveforms 설치 [링크](https://digilent.com/shop/software/digilent-w
 
 먼저 Waveforms를 설치한 후에, [`example.ipynb`](https://github.com/c-sooyoung/swimAD2/blob/main/example.ipynb) 파일을 보면 간단한 신호 발생 후 측정하는 예시가 있다.
 
+혹시 C가 익숙하다면, [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual)를 직접 보는 것을 추천한다.
 
 ## 함수 소개
 [`swimAD2.py`](https://github.com/c-sooyoung/swimAD2/blob/main/swimAD2.py)에는 AD2의 Wavegen과 Oscilloscope의 기초적인 조작만 할 수 있는 함수들만 있다. (학기 말에 가서야 Waveforms SDK가 조금이나마 익숙해지기 시작해서ㅠㅠ)
@@ -49,4 +50,21 @@ Wavegen에서 신호 발생 시작. 뒤에 `stop_wavegen()`이나 `reset_wavegen
 `config_oscilloscope()`에서 설정한대로 측정을 시작한다. `sample_size`가 모두 차면, `t`, `v0`, `v1` 각각 `numpy` 행렬로 반환한다.  
 `t`는 엄밀하게는 측정된 시간이 아니라, `sample_rate`와 `sample_size`를 바탕으로 계산된 값이다.
 
-## Waveforms SDK에 대한 간단한 소개
+
+## Waveforms SDK에 대해서
+Waveforms SDK는 기본적으로 Digilent 기기들을 조작하는 C 라이브러리이다. Waveforms를 설치하면 SDK 폴더에 이를 이용하는 C와 파이썬 예시파일들이 있고, Digilent에서 배포한 [파이썬 데모 패키지](https://github.com/Digilent/WaveForms-SDK-Getting-Started-PY/blob/master/WF_SDK/device.py)도 있다.
+
+위 함수들은 SDK의 DwfAnalogIn과 DwfAnalogOut의 가장 기초적인 함수들 몇 가지를 묶어서 내가 쓰기 편하게 만든 것이다.
+따라서 AD2로 가능하지만, swimAD2에는 없는 기능이 훨씬 더 많다. DwfAnalogOut에서의 커스텀 신호 발생, DwfAnalogIn에서 지속 측정 (8192개를 넘어서 continuous logging이 되는듯..?) DwfAnalogIO의 DC 컨트롤, DwfDigital 쪽의 모든 기능들... 등등 더 하고 싶은 것이 있으면, SDK에서 직접 꺼내 쓸 수 있을 것이다.
+
+
+C를 알고, 특히 C에서의 자료형과 포인터가 익숙하면 [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual)를 읽는 것이 수월할 것이다.
+
+
+## 기타 자료
+
+[AD2 Specifications](https://digilent.com/reference/test-and-measurement/analog-discovery-2/specifications)
+
+[SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual)
+
+Digilent Github에 있는 [파이썬 데모 패키지](https://github.com/Digilent/WaveForms-SDK-Getting-Started-PY/blob/master/WF_SDK/device.py)
