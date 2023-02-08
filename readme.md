@@ -15,7 +15,7 @@ Digilent Waveforms 설치 [링크](https://digilent.com/shop/software/digilent-w
 #### `connect`, `disconnect`
 `connect(number=0)` &rightarrow; `c_int`  
 n번째 (기본값 0) 연결된 digilent 기기(기기번호/handle)를 가져온다. 변수 자체는 `c_int` 형태이고, 이후 wavegen과 oscilloscope를 이용할 때 넣어주면 된다.  
-<span style="color: lightgray;">원래는 반환값 없이 기기 한 개만 연결한 채로 나머지 모든 함수가 그 기기에 적용되는 방식이었다가, 동시에 기기 2개 이상을 조작해야 될 필요가 생겨서 기기번호를 불러오는 식으로 변경했다.</span>
+<span style="color: red;">원래는 반환값 없이 기기 한 개만 연결한 채로 나머지 모든 함수가 그 기기에 적용되는 방식이었다가, 동시에 기기 2개 이상을 조작해야 될 필요가 생겨서 기기번호를 불러오는 식으로 변경했다.</span>
 
 `disconnect()`  
 모든 기기의 연결을 지운다.
