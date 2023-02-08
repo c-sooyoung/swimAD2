@@ -89,8 +89,8 @@ def reset_wavegen(hdwf, channel=c.c_int(-1)):
 def config_oscilloscope(
     hdwf,
     # oscilloscope settings
-    range1,                     # Oscilloscope Channel 1 voltage range, max 25 V
-    range2,                     # Oscilloscope Channel 2
+    range0,                     # Oscilloscope Channel 1 voltage range, max 25 V
+    range1,                     # Oscilloscope Channel 2
     sample_rate,                # max 100 MHz
     sample_size = 8192,         # max 8192, sample time = sample_size / sample_rate
     ):
@@ -98,8 +98,8 @@ def config_oscilloscope(
     # configure oscilloscope
     sample_rate = 100e6 if sample_rate >= 100e6 else sample_rate
     dwf.FDwfAnalogInFrequencySet(hdwf, c.c_double(sample_rate))             # set sampling rate
-    dwf.FDwfAnalogInChannelRangeSet(hdwf, c.c_int(0), c.c_double(range1))   # set channel 1 range
-    dwf.FDwfAnalogInChannelRangeSet(hdwf, c.c_int(1), c.c_double(range2))   # set channel 2 range
+    dwf.FDwfAnalogInChannelRangeSet(hdwf, c.c_int(0), c.c_double(range0))   # set channel 0 range
+    dwf.FDwfAnalogInChannelRangeSet(hdwf, c.c_int(1), c.c_double(range1))   # set channel 1 range
     dwf.FDwfAnalogInBufferSizeSet(hdwf, c.c_int(sample_size))               # set sample size
 
 
@@ -119,14 +119,14 @@ def measure_oscilloscope(hdwf):
         dwf.FDwfAnalogInStatus(hdwf, c.c_int(1), c.byref(status))
     
     # get data as python variables
-    time_axis = np.arange(sample_size) / sample_rate.value                # time data
+    t = np.arange(sample_size) / sample_rate.value                # time data
 
-    rg1 = (c.c_double*sample_size)()                                      # get channel 1 data
-    dwf.FDwfAnalogInStatusData(hdwf, c.c_int(0), rg1, sample_size)
-    data1 = np.fromiter(rg1, dtype=float)
+    rg0 = (c.c_double*sample_size)()                                      # get channel 1 data
+    dwf.FDwfAnalogInStatusData(hdwf, c.c_int(0), rg0, sample_size)
+    v0 = np.fromiter(rg0, dtype=float)
 
-    rg2 = (c.c_double*sample_size)()                                      # get channel 2 data
-    dwf.FDwfAnalogInStatusData(hdwf, c.c_int(1), rg2, sample_size)
-    data2 = np.fromiter(rg2, dtype=float)
+    rg1 = (c.c_double*sample_size)()                                      # get channel 2 data
+    dwf.FDwfAnalogInStatusData(hdwf, c.c_int(1), rg1, sample_size)
+    v1 = np.fromiter(rg1, dtype=float)
 
-    return time_axis, data1, data2
+    return t, v0, v1

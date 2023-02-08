@@ -20,7 +20,6 @@ n번째 (기본값 0) 연결된 digilent 기기(기기번호/handle &rightarrow;
 
 ### Wavegen 조작
 #### `config_wavegen(hdwf, frequency, amplitude, signal_shape=dwfc.funcSine, offset=0, phase=0, symmetry=50, channel=0)`
-Wavegen에서 발생할 신호를 설정한다.  
 기기번호 `hdwf`, 주파수 `frequency`, 진폭 `amplitude`는 반드시 직접 설정해주어야 한다. 나머지 변수는 설정하지 않으면 위의 기본값이 들어간다.  
 `hdwf`: 기기번호  
 `frequency`: 주파수 (단위 Hz), 최대 10 MHz  
@@ -38,8 +37,16 @@ Wavegen에서 신호 발생 시작. 뒤에 `stop_wavegen()`이나 `reset_wavegen
 각각 신호 정지, Wavegen 설정 초기화.
 
 ### Oscilloscope 조작
-#### `config_oscilloscope`
-#### `measure_oscilloscope`
+#### `config_oscilloscope(hdwf, range0, range1, sample_rate, sample_size=8192)`
+`hdwf`: 기기번호  
+`range0`: Oscilloscope channel 0의 범위, (단위 V)  
+`range1`: Oscilloscope channel 1의 범위  
+범위는 최대 25 V이긴 하지만, 실제 AD2 Oscilloscope의 측정 간격은 High-gain(~0.3mV)과 Low-gain(~3mV) 둘 중 하나로 고정된다. 대충 1 V 이상이면 Low-gain으로 가는듯..?  
+`sample_rate`: 측정 속도 (단위 V), 최대 100 MHz.  
+`sample_size`: 측정 횟수, 최대 8192.
 
+#### `measure_oscilloscope(hdwf)` &rightarrow; `t, v0, v1`
+`config_oscilloscope()`에서 설정한대로 측정을 시작한다. `sample_size`가 모두 차면, `t`, `v0`, `v1` 각각 `numpy` 행렬로 반환한다.  
+`t`는 엄밀하게는 측정된 시간이 아니라, `sample_rate`와 `sample_size`를 바탕으로 계산된 값이다.
 
 ## Waveforms SDK에 대한 간단한 소개
