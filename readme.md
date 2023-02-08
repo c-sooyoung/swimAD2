@@ -18,7 +18,7 @@ Digilent Waveforms 설치 [링크](https://digilent.com/shop/software/digilent-w
 
 ### AD2 연결
 #### `connect(number=0)` &rightarrow; `c_int` (`hdwf`)  
-n번째 (기본값 0) 연결된 digilent 기기(기기번호/handle &rightarrow; `hdwf`)를 가져온다. 변수 자체는 `c_int` 형태이고, 이후 wavegen과 oscilloscope를 이용할 때 넣어주면 된다. 
+n번째 (기본값 0) 연결된 digilent 기기(handle &rightarrow; `hdwf`)를 가져온다. 변수 자체는 `c_int` 형태이고, 이후 wavegen과 oscilloscope를 이용할 때 넣어주면 된다. 
 
 #### `disconnect()`  
 모든 기기와의 연결을 끊는다. 예를 들어 AD2를 한 쥬피터 노트북에 연결해서 쓰다가, Waveforms 앱을 직접 사용하거나 다른 파일을 통해 조작하기 위해서는 먼저 현재 연결을 끊어줘야 한다.
@@ -26,7 +26,7 @@ n번째 (기본값 0) 연결된 digilent 기기(기기번호/handle &rightarrow;
 ### Wavegen 조작
 #### `config_wavegen(hdwf, frequency, amplitude, signal_shape=dwfc.funcSine, offset=0, phase=0, symmetry=50, channel=0)`
 기기번호 `hdwf`, 주파수 `frequency`, 진폭 `amplitude`는 반드시 직접 설정해주어야 한다. 나머지 변수는 설정하지 않으면 위의 기본값이 들어간다.  
-`hdwf`: 기기번호  
+`hdwf`: 기기  
 `frequency`: 주파수 (단위 Hz), 최대 10 MHz  
 `amplitude`: 진폭 (단위 V), 최대 5 V  
 `signal_shape`: 기본값 사인함수 (`swimAD2.dwfc.funcSine`) 외에 `funcSquare`, `funcTriangle` 등 다른 함수 모양은 [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual) 참고.  
@@ -43,7 +43,7 @@ Wavegen에서 신호 발생 시작. 뒤에 `stop_wavegen()`이나 `reset_wavegen
 
 ### Oscilloscope 조작
 #### `config_oscilloscope(hdwf, range0, range1, sample_rate, sample_size=8192)`
-`hdwf`: 기기번호  
+`hdwf`: 기기  
 `range0`: Oscilloscope channel 0의 범위, (단위 V)  
 `range1`: Oscilloscope channel 1의 범위  
 범위는 최대 25 V이긴 하지만, 실제 AD2 Oscilloscope의 측정 간격은 High-gain(~0.3mV)과 Low-gain(~3mV) 둘 중 하나로 고정된다. 대충 1 V 이상이면 Low-gain으로 가는듯..?  
