@@ -1,6 +1,8 @@
 # swimAD2
 
 2022년 중급물리실험 2를 수강하면서 Analog Discovery 2를 조작하기 위해 만들었던 간단한 파이썬 함수들을 모아놓았다.
+내가 쓰기 편하게 만든 함수들이고, 전혀 체계적이지 않고 AD2의 기능 중 담지 못한 것이 엄청나게 많다.
+반면 기능이 빠진 만큼 AD2를 아예 처음 조작하는 것이 막막하지 않고 단순하게, 친절하게 다가올 수 있도록 만들려고 노력했다.
 
 ## 처음 시작한다면
 Digilent Waveforms 설치 [링크](https://digilent.com/shop/software/digilent-waveforms/download) **&rightarrow; 반드시 SDK 포함해서 설치하기**
@@ -8,6 +10,8 @@ Digilent Waveforms 설치 [링크](https://digilent.com/shop/software/digilent-w
 먼저 Waveforms를 설치한 후에, [`example.ipynb`](https://github.com/c-sooyoung/swimAD2/blob/main/example.ipynb) 파일을 보면 간단한 신호 발생 후 측정하는 예시가 있다.
 
 혹시 C가 익숙하다면, [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual)를 직접 보는 것을 추천한다.
+
+체계적이고 완성도 있는 것을 원한다면, [pydwf](https://pypi.org/project/pydwf/) 패키지가 있다. [레퍼런스](https://pydwf.readthedocs.io/en/latest/pydwf_api/pydwf_overview.html)
 
 ## 함수 소개
 [`swimAD2.py`](https://github.com/c-sooyoung/swimAD2/blob/main/swimAD2.py)에는 AD2의 Wavegen과 Oscilloscope의 기초적인 조작만 할 수 있는 함수들만 있다. (학기 말에 가서야 Waveforms SDK가 조금이나마 익숙해지기 시작해서ㅠㅠ)
