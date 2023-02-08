@@ -53,7 +53,7 @@ def config_wavegen(
     frequency,                              # max 10 MHz
     amplitude,                              # max 5 V
     signal_shape = dwfc.funcSine,           # output signal shape: funcSine, funcSquare, funcTriangle, funcRampUp, funcRampDown, funcNoise
-    offset = 0,                             # signal voltage offset, set stabilizing time > 2 sec if not 0
+    offset = 0,                             # signal voltage offset
     phase = 0,                              # signal phase
     symmetry = 50,                          # signal symmetry shape
     channel = 0                             # channel 0 / 1 (or -1 for all channels) 
