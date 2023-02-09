@@ -1,6 +1,6 @@
 import ctypes as c                # import the C compatible data types
 from sys import platform, path    # this is needed to check the OS type and get the PATH
-from os import sep                # OS specific file path separatorsimport time
+from os import sep                # OS specific file path separators
 import numpy as np
 
 
