@@ -56,13 +56,15 @@ Wavegen에서 신호 발생 시작. 뒤에 `stop_wavegen()`이나 `reset_wavegen
 
 
 ## Waveforms SDK에 대해서
-Waveforms SDK는 기본적으로 Digilent 기기들을 조작하는 C 라이브러리이다. Waveforms를 설치하면 SDK 폴더에 이를 이용하는 C와 파이썬 예시파일들이 있고, Digilent에서 배포한 [파이썬 데모 패키지](https://github.com/Digilent/WaveForms-SDK-Getting-Started-PY/blob/master/WF_SDK/device.py)도 있다.
+Waveforms SDK는 기본적으로 Digilent 기기들을 조작하는 C 라이브러리이다. 파이썬에서는 이 라이브러리를 `ctypes` 모듈을 통해서 사용하고, 따라서 SDK 함수들은 입출력을 C 변수형을 기본으로 한다.
 
-위 함수들은 SDK의 DwfAnalogIn과 DwfAnalogOut의 가장 기초적인 함수들 몇 가지를 묶어서 내가 쓰기 편하게 만든 것이다.
-따라서 AD2로 가능하지만, swimAD2에는 없는 기능이 훨씬 더 많다. DwfAnalogOut에서의 커스텀 신호 발생, DwfAnalogIn에서 지속 측정 (8192개를 넘어서 continuous logging이 되는듯..?) DwfAnalogIO의 DC 컨트롤, DwfDigital 쪽의 모든 기능들... 등등 더 하고 싶은 것이 있으면, SDK에서 직접 꺼내 쓸 수 있을 것이다.
+Waveforms를 설치하면 SDK 폴더에 이를 이용하는 C와 파이썬 예시파일들이 있고, Digilent에서 배포한 [파이썬 데모 패키지](https://github.com/Digilent/WaveForms-SDK-Getting-Started-PY/blob/master/WF_SDK/device.py)도 있다.
 
+`swimAD2`의 함수들은 SDK의 DwfAnalogIn과 DwfAnalogOut의 가장 기초적인 함수들 몇 가지를 묶어서 내가 쓰기 편하게 만든 것이다.
+특히 C 자료형을 건드릴 필요가 없게끔 최대한 파이썬 자료형으로 번역해 놓았다.
+한편 AD2로 가능하지만, swimAD2에는 없는 기능이 훨씬 더 많다. DwfAnalogOut에서의 커스텀 신호 발생, DwfAnalogIn에서 지속 측정 (8192개를 넘어서 continuous logging이 되는듯..?) DwfAnalogIO의 DC 컨트롤, DwfDigital 쪽의 모든 기능들... 등등 더 하고 싶은 것이 있으면, SDK에서 직접 꺼내 쓸 수 있을 것이다.
 
-C를 알고, 특히 C에서의 자료형과 포인터가 익숙하면 [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual)를 읽는 것이 수월할 것이다.
+C를 알고, 특히 C에서의 자료형과 포인터가 익숙하면 [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual)를 읽고 직접 조작해서 새로운 기능을 추가하는 것이 어렵지 않을 것이다.
 
 
 ## 기타 자료
