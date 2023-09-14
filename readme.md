@@ -18,7 +18,8 @@ Digilent Waveforms 설치 [링크](https://digilent.com/shop/software/digilent-w
 
 ### AD2 연결
 #### `connect(number=0)` &rightarrow; `c_int` (`hdwf`)  
-n번째 연결된 digilent 기기(`hdwf`)를 가져온다. 변수 자체는 `c_int` 형태이고, 이후 wavegen과 oscilloscope를 이용할 때 넣어주면 된다. 
+n번째 연결된 digilent 기기(`hdwf`)를 가져온다. 변수 자체는 `c_int` 형태이고, 이후 wavegen과 oscilloscope를 이용할 때 넣어주면 된다.  
+(테크니컬하게는... 메모리에서 기기 핸들의 주소를 가져오는 것이다)
 
 #### `disconnect()`  
 모든 기기와의 연결을 끊는다. 예를 들어 AD2를 한 쥬피터 노트북에 연결해서 쓰다가, Waveforms 앱을 직접 사용하거나 다른 파일을 통해 조작하기 위해서는 먼저 현재 연결을 끊어줘야 한다.
