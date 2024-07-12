@@ -45,10 +45,9 @@ Wavegen에서 신호 발생 시작. 뒤에 `stop_wavegen()`이나 `reset_wavegen
 ### Oscilloscope 조작
 #### `config_oscilloscope(hdwf, range0, range1, sample_rate, sample_size=8192)`
 `hdwf`: 기기  
-`range0`: Oscilloscope channel 0의 범위, (단위 V)  
-`range1`: Oscilloscope channel 1의 범위  
+`range0`, `range1`: 각각 Oscilloscope channel 0, 1의 범위. (단위 V)  
 범위는 최대 25 V이긴 하지만, 실제 AD2 Oscilloscope의 측정 간격은 High-gain(~0.3mV)과 Low-gain(~3mV) 둘 중 하나로 고정된다. 대충 1 V 이상이면 Low-gain으로 가는듯..?  
-`sample_rate`: 측정 속도 (단위 V), 최대 100 MHz.  
+`sample_rate`: 측정 속도 (단위 Hz), 최대 100 MHz.  
 `sample_size`: 측정 횟수, 최대 8192.
 
 #### `measure_oscilloscope(hdwf)` &rightarrow; `t, v0, v1`
