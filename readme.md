@@ -4,6 +4,13 @@
 내가 쓰기 편하게 만든 함수들이라서 전혀 체계적이지 않고 AD2의 기능 중 담지 못한 것이 엄청나게 많다.
 반면 기능이 빠진 만큼 AD2를 아예 처음 조작하는 것이 막막하지 않고 단순하게, 친절하게 다가올 수 있도록 만들려고 노력했다.
 
+> [!NOTE]
+> **swimAD2가 도움이 되었다면:**
+> - swimAD2를 바탕으로 실험을 한 예시들을 모으려고 합니다. 본인이 **공유하고 싶은 실험이나 코드**가 있다면, [experiments 폴더](./experiments/)에 pull request를 넣거나, 제게 이메일(c.sooyoung.me@스누메일)로 보내주세요.
+> - swimAD2을 **개선하거나 기능을 새로 추가**한 것이 있다면, pull request를 넣거나 이메일을 보내주시면 정말 감사하겠습니다!
+> - 마지막으로, 여기 github 링크(github.com/c-sooyoung/swimAD2)를 표시하고 공유하는 것도 큰 도움이 됩니다. 🙂
+
+
 ## 처음 시작한다면
 Digilent Waveforms 설치 [링크](https://digilent.com/shop/software/digilent-waveforms/download) **&rightarrow; 반드시 SDK 포함해서 설치하기**
 
@@ -12,6 +19,9 @@ Digilent Waveforms 설치 [링크](https://digilent.com/shop/software/digilent-w
 혹시 C가 익숙하다면, [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual)를 직접 보는 것을 추천한다.
 
 체계적이고 완성도 있는 것을 원한다면, [pydwf](https://pypi.org/project/pydwf/) 패키지가 있다. [pydwf 레퍼런스](https://pydwf.readthedocs.io/en/latest/pydwf_api/pydwf_overview.html)
+
+**제대로 작동하지 않는 경우 &rarr; [troubleshooting.md](troubleshooting.md) 문서 참조**
+
 
 ## 함수 소개
 [`swimAD2.py`](https://github.com/c-sooyoung/swimAD2/blob/main/swimAD2.py)에는 AD2의 Wavegen과 Oscilloscope의 기초적인 조작만 할 수 있는 함수들만 있다. (학기 말에 가서야 Waveforms SDK가 조금이나마 익숙해지기 시작해서ㅠㅠ)
@@ -74,3 +84,9 @@ C를 알고, 특히 C에서의 자료형과 포인터가 익숙하면 [SDK 레�
 [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual)
 
 Digilent Github에 있는 [파이썬 데모 패키지](https://github.com/Digilent/WaveForms-SDK-Getting-Started-PY/blob/master/WF_SDK/device.py)
+
+
+---
+
+Special thanks:  
+2022년 조원 현수, 하진, 이선
