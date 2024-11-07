@@ -1,8 +1,6 @@
 # swimAD2
 
-2022년 중급물리실험 2를 수강하면서 Analog Discovery 2를 조작하기 위해 만들었던 간단한 파이썬 함수들을 모아놓았다.
-내가 쓰기 편하게 만든 함수들이라서 전혀 체계적이지 않고 AD2의 기능 중 담지 못한 것이 엄청나게 많다.
-반면 기능이 빠진 만큼 AD2를 아예 처음 조작하는 것이 막막하지 않고 단순하게, 친절하게 다가올 수 있도록 만들려고 노력했다.
+2022년 중급물리실험 2를 수강하면서 Analog Discovery 2를 조작하기 위해 만들었던 간단한 파이썬 함수들을 모아놓았다. 내가 쓰기 편하게 만든 함수들이라서 전혀 체계적이지 않고 AD2의 기능 중 담지 못한 것이 훨씬 많다. 그래도 기능이 빠진 만큼 AD2를 아예 처음 조작하는 것이 단순하고 친절하게 다가올 수 있도록 만들려고 했다.
 
 > [!NOTE]
 > **swimAD2가 도움이 되었다면:**
@@ -11,19 +9,19 @@
 > - 마지막으로, 여기 github 링크(github.com/c-sooyoung/swimAD2)를 표시하고 공유하는 것도 큰 도움이 됩니다. 🙂
 
 
-## 처음 시작한다면
-Digilent Waveforms 설치 [링크](https://digilent.com/shop/software/digilent-waveforms/download) **&rightarrow; 반드시 SDK 포함해서 설치하기**
+## 처음 시작하기
+
+Digilent Waveforms 설치 [링크](https://digilent.com/shop/software/digilent-waveforms/download) &rarr; **반드시 SDK 포함해서 설치하기**
 
 먼저 Waveforms를 설치한 후에 [`example.ipynb`](https://github.com/c-sooyoung/swimAD2/blob/main/example.ipynb) 파일을 보면 간단한 신호 발생 후 측정하는 예시가 있다.
 
-혹시 C가 익숙하다면, [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual)를 직접 보는 것을 추천한다.
+제대로 작동하지 않는 경우 &rarr; [troubleshooting.md](troubleshooting.md) 문서 참조
 
-체계적이고 완성도 있는 것을 원한다면, [pydwf](https://pypi.org/project/pydwf/) 패키지가 있다. [pydwf 레퍼런스](https://pydwf.readthedocs.io/en/latest/pydwf_api/pydwf_overview.html)
-
-**제대로 작동하지 않는 경우 &rarr; [troubleshooting.md](troubleshooting.md) 문서 참조**
+AD2, Waveforms 사용이 익숙해지고 추가적인 기능이 필요해지면 [SDK를 직접 사용](#waveforms-sdk에-대해서)하거나 [다른 파이썬 패키지](#다른-waveforms-파이썬-패키지들)를 사용하는 것도 추천합니다.
 
 
 ## 함수 소개
+
 [`swimAD2.py`](https://github.com/c-sooyoung/swimAD2/blob/main/swimAD2.py)에는 AD2의 Wavegen과 Oscilloscope의 기초적인 조작만 할 수 있는 함수들만 있다. (학기 말에 가서야 Waveforms SDK가 조금이나마 익숙해지기 시작해서ㅠㅠ)
 
 ### AD2 연결
@@ -66,6 +64,7 @@ Wavegen에서 신호 발생 시작. 뒤에 `stop_wavegen()`이나 `reset_wavegen
 
 
 ## Waveforms SDK에 대해서
+
 Waveforms SDK는 기본적으로 Digilent 기기들을 조작하는 C 라이브러리이다. 파이썬에서는 이 라이브러리를 `ctypes` 모듈을 통해서 사용하고, 따라서 SDK 함수들은 입출력을 C 변수형을 기본으로 한다.
 
 Waveforms를 설치하면 SDK 폴더에 이를 이용하는 C와 파이썬 예시파일들이 있고, Digilent에서 배포한 [파이썬 데모 패키지](https://github.com/Digilent/WaveForms-SDK-Getting-Started-PY/blob/master/WF_SDK/device.py)도 있다.
@@ -77,14 +76,20 @@ Waveforms를 설치하면 SDK 폴더에 이를 이용하는 C와 파이썬 예�
 C를 알고, 특히 C에서의 자료형과 포인터가 익숙하면 [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual)를 읽고 직접 조작해서 새로운 기능을 추가하는 것이 어렵지 않을 것이다.
 
 
+## 다른 Waveforms 파이썬 패키지들
+
+AD2와 Waveforms 사용법이 익숙해졌고, 더 체계적이고 완성도 있는 걸 원하면:
+- (추천, 깔끔한듯함) [dwfpy](https://pypi.org/project/dwfpy/) / [레퍼런스](https://dwfpy.readthedocs.io/en/latest/)
+- [pydwf](https://pypi.org/project/pydwf/) / [레퍼런스](https://pydwf.readthedocs.io/en/latest)
+
+
 ## 기타 자료
 
 [AD2 Specifications](https://digilent.com/reference/test-and-measurement/analog-discovery-2/specifications)
 
 [SDK 레퍼런스](https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual)
 
-Digilent Github에 있는 [파이썬 데모 패키지](https://github.com/Digilent/WaveForms-SDK-Getting-Started-PY/blob/master/WF_SDK/device.py)
-
+Digilent Github에 있는 [파이썬 SDK 데모](https://github.com/Digilent/WaveForms-SDK-Getting-Started-PY)
 
 ---
 
